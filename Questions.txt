@@ -1,0 +1,150 @@
+Q) Which are legal
+
+A)
+class X { var x = 99; }
+
+B) void doStuff(var x) { }
+
+C) void doStuff() {
+  var x;
+  x = 100;
+}
+
+D) void doStuff() {
+  var x = 100;
+}
+
+E) void doStuff() {
+  var x = { 1, 2, 3 };
+}
+
+Q) Which are legal:
+A) void doStuff() {
+     var x = new int[]{ 1, 2, 3 };
+   }
+B) void doStuff() {
+     var [] x = new int[]{ 1, 2, 3 };
+   }
+C) void doStuff() {
+     var x = 99;
+     x = "Hello";
+   }
+D) void doStuff() {
+     var x = 1, y = 2;
+   }
+E)   void doStuff() {
+     try {
+      // stuff happens
+      } catch (var ex) {
+      }
+   }
+
+Q) Which are legal
+    A)
+       for (var x = 0; x < 3; x++)
+         System.out.println(x);
+    B)
+       try (var in = new FileReader("");
+            var out = new FileWriter("")) {
+       }
+    C)
+       var var = "var";
+
+Q) Which are legal:
+A) { int x; }
+   { int x; }
+B) class X {
+        { sout(x); }
+        int x;
+      }
+C) {
+        int x;
+        { int x; }
+      }
+D) {
+        int x;
+        Predicate<String> ps = x -> true;
+      }
+E) for (int x = 0; x < 10; x++)
+        ;
+       int x;
+
+Q) Which print "true"
+   A) String s = "Hello";
+      String t = "He";
+      t += "llo";
+      sout(s == t);
+   B) String s = "Hello";
+      String t = "He";
+      t += "llo";
+      sout(s.equals(t));
+   C) StringBuilder s = new StringBuilder("Hello");
+      StringBuilder t = new StringBuilder("He");
+      t.append("llo");
+      sout(s.equals(t));
+   D) List<String> ls = List.of("Fred", "Jim");
+      List<String> ls2 = new ArrayList<>(ls);
+      sout(ls.equals(ls2));
+   E) LocalDate ld = LocalDate.of(2021, 3, 29);
+      LocalDate ld2 = LocalDate.of(2021, 3, 29);
+      sout(ld.equals(ld2));
+
+Q) Given
+     void doStuff() throws IOException {};
+     void doStuff2() throws FileNotFoundException {};
+And:
+     void tryStuff() {
+       try {
+         doStuff();
+         doStuff2();
+       } enter code here {
+         // handle both exceptions
+       }
+     }
+   What can be inserted at "enter code here"
+   to provide handling of exceptions from both
+   methods?
+   A) catch (IOException | FileNotFoundException e)
+   B) catch (FileNotFoundException | IOException e)
+   C) catch (FileNotFoundException e)
+   D) catch (IOException e)
+   E) finally
+
+Q) Given
+     void doStuff() throws SQLException {};
+     void doStuff2() throws FileNotFoundException {};
+   And:
+     void tryStuff() ...insert here... {
+       try {
+         doStuff();
+         doStuff2();
+       } catch (SQLException | FileNotFoundException e) {
+         throw e;
+       }
+     }
+
+   What is best at "...insert here..."?
+   A) throws Exception
+   B) throws SQLException
+   C) throws FileNotFoundException
+   D) throws FileNotFoundException, SQLException
+   E) nothing is needed, compilation succeeds as is
+
+Q) Given
+   class AC implements AutoCloseable {
+     private String name;
+     public AC(String name) { this.name = name; }
+     @Override public void close() {
+       System.out.println("Closing " + name);
+     }
+   }
+And:
+       var ac0 = new AC("zero");
+       try (var ac1 = new AC("one"); var ac2 = new AC("two"); ac0; ){ }
+
+What is the result?
+   A) Compilation fails
+   B) Closing zero Closing two Closing one
+   C) Closing zero Closing one Closing two
+   D) Closing two Closing one Closing zero
+   E) Closing one Closing two Closing zero
