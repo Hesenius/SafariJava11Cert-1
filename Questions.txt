@@ -199,3 +199,56 @@ and:
   C) Method E is invoked
   D) Compilation fails
 
+
+Liskov substitution says: if a is a B then a must substitute for B without
+causing surprises -- primarily relates to overriding
+
+Q) Given
+     public int getValue() {return 1;}
+
+which of these methods may individually be added to a subclass of this class?
+
+     A) public int getValue(int x) {return 1;}
+     B) public String getValue() {return "Hello";}
+     C) public String getValue(int x) {return "Hello";}
+
+Q) Given
+     class Base2 {
+       void doBaseStuff() {
+         System.out.println("doBaseStuff");
+       }
+     }
+     class Sub2 extends Base2 {
+       void doBaseStuff(int x) {
+         System.out.println("doSubStuff");
+       }
+     }
+
+In the Base2 and Sub2 classes, which are true in isolation?
+
+A) doBaseStuff in Base2 can be marked public without causing errors
+B) doBaseStuff in Base2 can be marked private without causing errors
+C) doBaseStuff in Sub2 can be marked public without causing errors
+D) doBaseStuff in Sub2 can be marked protected without causing errors
+E) doBaseStuff in Sub2 can be marked private without causing errors
+
+Q) Given
+     class Base2 {
+       void doBaseStuff() {
+         System.out.println("doBaseStuff");
+       }
+     }
+     class Sub2 extends Base2 {
+       void doBaseStuff() {
+         System.out.println("doSubStuff");
+       }
+     }
+
+In the Base2 and Sub2 classes, which are true in isolation?
+
+A) doBaseStuff in Base2 can be marked public without causing errors
+B) doBaseStuff in Base2 can be marked private without causing errors
+C) doBaseStuff in Sub2 can be marked public without causing errors
+D) doBaseStuff in Sub2 can be marked protected without causing errors
+E) doBaseStuff in Sub2 can be marked private without causing errors
+
