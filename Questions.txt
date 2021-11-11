@@ -369,3 +369,22 @@ B) RuntimeException
 C) IntA.doStuff()
 D) IntB.doStuff()
 E) ClA.doStuff()
+
+Q) Given:
+ @FunctionalInterface
+ interface StudentCriterion {
+   boolean test(Student s);
+ }
+
+and:
+ class Student {
+   public int getGpa() { return 0; }
+   public List<String> getCourses() { return null; }
+ }
+
+Which are legal (individually):
+A) StudentCriterion sc = Student s -> { return s.getGpa() > 3;};
+B) StudentCriterion sc = s -> { s.getGpa() > 3 };
+C) Object sc = s -> {return s.getGpa() > 3;};
+D) StudentCriterion sc = (s) -> s.getGpa() > 3;
+E) StudentCriterion sc = s -> s.getCourses().size();
