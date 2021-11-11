@@ -415,3 +415,17 @@ What is the result?
   C) [Jim]
   D) Compilation fails
   E) Exception at runtime
+
+Q) Which are valid annotation declarations?
+   A) @interface Annot {}
+   B) @ interface Annot {
+        String value() = "";
+      }
+   C) @interface Annot {
+        StringBuilder text();
+      }
+   D) @interface Annot {
+        Class value();
+      }
+   E) @Retention(RetentionPolicy.CLASS)
+      @interface Annot {}
