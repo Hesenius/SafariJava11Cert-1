@@ -388,3 +388,30 @@ B) StudentCriterion sc = s -> { s.getGpa() > 3 };
 C) Object sc = s -> {return s.getGpa() > 3;};
 D) StudentCriterion sc = (s) -> s.getGpa() > 3;
 E) StudentCriterion sc = s -> s.getCourses().size();
+
+Q)   Which are legal individually:
+A) Function<String, String> fss = s -> { System.out.println(s); };
+B) Consumer<String> cs = s -> { System.out.println(s); };
+C) Supplier<String> ss = (s1, s2) -> s1 + s2;
+D) BiPredicate<String> bps = (String s) -> { return s.length() > 0; };
+E) ToIntFunction<String> tofs = s -> s.length();
+
+Q) Given:
+     public static Predicate<String> getOne(int x) {
+       return new Predicate<String>() {
+         @Override
+         public boolean test(String s) {
+           return s.length() >= ++x;
+         }
+       };
+     }
+and:
+       System.out.println(
+           List.of("Fred", "Jim", "Sheila")
+               .removeIf(getOne(3)));
+What is the result?
+  A) true
+  B) [Fred, Jim]
+  C) [Jim]
+  D) Compilation fails
+  E) Exception at runtime
